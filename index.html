@@ -18,14 +18,14 @@ body{font-size:62.5%;font-family:"Microsoft YaHei",Arial; overflow-x:hidden; ove
    <script>
         function choose() {
             var items = ['TPlus','LeLe茶','喜茶','一点点','奈雪','小眷村','快乐柠檬','KOI'];
-			var itemsOfTplus = ['冰淇淋红茶 不加糖','冰淇淋厚奶茶 芋圆+3分糖','冰淇淋厚奶茶	仙草+3分糖','英式伯爵厚奶茶 珍珠+不加糖','冻顶乌龙厚奶茶 珍珠+3分糖','焦糖布丁厚奶茶 3分糖','四季春韵厚奶茶 芋圆+3分糖','芋头圆圆鲜奶茶 3分糖','英式伯爵芝芝盖 3分糖','冻顶乌龙芝芝盖	3分糖','四季春韵芝芝盖 3分糖','爽口芒果芝芝盖 3分糖'];
-			var itemsOfLeLe = ['草莓酪酪	3分糖','荔枝酪酪 不加糖','车厘子酪酪 3分糖','金玉茶王酪酪	3分糖','玫珑蜜瓜酪酪 不加糖'];
+			var itemsOfTplus = ['冰淇淋红茶 3分糖','冰淇淋厚奶茶 芋圆+3分糖','冰淇淋厚奶茶	仙草+3分糖','英式伯爵厚奶茶	 珍珠+3分糖','冻顶乌龙厚奶茶 珍珠+3分糖','焦糖布丁厚奶茶 3分糖','四季春韵厚奶茶 芋圆+3分糖','芋头圆圆鲜奶茶 3分糖','英式伯爵芝芝盖 3分糖','冻顶乌龙芝芝盖	 3分糖','四季春韵芝芝盖 3分糖','爽口芒果芝芝盖 3分糖'];
+			var itemsOfLeLe = ['草莓酪酪	5分糖','草莓桃子酪酪 3分糖','草莓蓝莓酪酪 3分糖','葡萄酪酪	3分糖','车厘子酪酪 3分糖','金玉茶王酪酪	3分糖','玫珑蜜瓜酪酪 3分糖'];
 			var itemsOfXiCha = ['芝芝桃桃	 3分糖','芝芝莓莓	5分糖','芝芝蓝莓双拼 3分糖','多肉葡萄 3分糖','奶茶波波冰 3分糖','芝芝绿研 3分糖','芝芝金玉 3分糖','芝芝金凤茶王	3分糖','满杯橙橙 3分糖','豆豆波波茶 3分糖'];
-			var itemsOfYidd  = ['波霸奶茶 3分糖','波霸奶茶 冰淇淋+不加糖','四季奶青 波霸+3分糖','四季奶青	仙草+波霸+3分糖','冰淇淋红茶 不加糖','冰淇淋红茶 波霸+不加糖','乌龙奶茶 波霸+3分糖','乌龙奶茶 冰淇淋+波霸+3分糖','乌龙奶茶 仙草+波霸+3分糖'];
+			var itemsOfYidd  = ['波霸奶茶 3分糖','波霸奶茶 冰淇淋+3分糖','四季奶青 冰淇淋+波霸+3分糖','四季奶青	仙草+波霸+3分糖','冰淇淋红茶 3分糖','冰淇淋红茶 波霸+3分糖','乌龙奶茶 波霸+3分糖','乌龙奶茶 冰淇淋+波霸+3分糖','乌龙奶茶 仙草+波霸+3分糖'];
 			var itemsOfNaiXue = ['霸气橙子 3分糖','霸气芝士黑提	 3分糖','霸气芝士莓莓莓 3分糖','霸气芝士草莓	3分糖','维他豆奶宝藏茶	3分糖','芝士阿里山初露 3分糖','芝士玫瑰乌龙 3分糖'];
-			var itemsOfXjc = ['涓豆腐奶茶 芝麻芋圆+不加糖','小眷村奶茶 不加糖','草莓小确幸 3分糖'];
+			var itemsOfXjc = ['涓豆腐奶茶 芝麻芋圆+3分糖','小眷村奶茶 3分糖','草莓小确幸 3分糖'];
 			var itemsOfKlnm = ['半熟蛋糕珍珠奶茶 3分糖','蛋糕忌廉珍珠奶茶	 3分糖','OREO曲奇奶茶	3分糖','岩盐芝士绿茶 3分糖','岩盐芝士四季春茶	 3分糖','岩盐芝士红茶	3分糖','两瓶养乐多柠檬绿茶 3分糖'];
-			var itemsOfKOI = ['伯爵珍奶 不加糖','芋圆伯爵奶茶 2分糖','鲜芒果绿 珍珠+不加糖','锡兰芋圆红茶 3分糖'];
+			var itemsOfKOI = ['伯爵珍奶 3分糖','芋圆伯爵奶茶 4分糖','鲜芒果绿 珍珠+5分糖','锡兰芋圆红茶'];
 			var item = items[Math.floor(Math.random()*items.length)];
 			var item2
 			switch (item) {
@@ -57,18 +57,99 @@ body{font-size:62.5%;font-family:"Microsoft YaHei",Arial; overflow-x:hidden; ove
 			document.getElementById("tea111").value=item
 			document.getElementById("tea222").value=item2
         }
+
+        var results = new Array();
+        var text =''
+        var count = 0;
+        var minValue = 0;
+        var minValueRow = 0;
+        function dot(){
+        	var randomResult = Math.round(Math.random() * 100)
+        	var refreshFlag = false
+        	if (count>20){
+        		results = new Array()
+        		count = 0
+        		minValue = 0
+        		minValueRow = 0
+        		document.getElementById("shaizi").value=''
+        		return
+        	}
+        	if (randomResult<minValue) {
+        		minValue = randomResult
+        		refreshFlag = true
+        	}
+        	if (count>0) {
+        		if (refreshFlag){
+        			results[count] = '你掷出了'+randomResult+'点'+', 现在你最小，天意如此，下楼拿奶茶吧'
+        			results[minValueRow] = results[minValueRow].split(",")[0]
+        			minValueRow = count
+        		}else{
+        			var comment = ''
+        			switch (true) {
+        				case randomResult<30:
+        					comment = ', 你危险了，年轻人'
+        					break;
+        				case randomResult>80&&randomResult<95:
+        					comment = ', 运气不错，基本轮不到你了'
+        					break;
+        				case randomResult>=95&&randomResult<100:
+        					comment = ', 听我一句，去买彩票吧'
+        					break;
+        				case randomResult > 55&&randomResult<=80:
+        					comment = ', 运气一般般'
+        					break;
+        				case randomResult == 52:
+        					comment = ', 要记住，我永远爱你'
+        					break;
+        				case randomResult == 100:
+        					comment = ', 你找我，我请你喝奶茶'
+        					break;
+        			}
+        			results[count] = '你掷出了'+randomResult+'点'+comment
+        		}
+        	}
+        	if (count == 0) {
+        		results[count] = '你掷出了'+randomResult+'点'+', 现在你最小，天意如此，下楼你去拿奶茶'
+        		minValueRow = count
+        		minValue = randomResult
+        	}
+        	count++
+        	text = ''
+        	for (i = 0; i < results.length; i++) { 
+    			text += results[i] + "\n";
+ 				}
+        	document.getElementById("shaizi").value=text
+        	document.getElementById("shaizi").scrollTop = document.getElementById("shaizi").scrollHeight;
+        }
+
+        function cleartext(){
+        	text =''
+        	document.getElementById("shaizi").value=''
+        	results = new Array()
+        	count = 0
+        	minValue = 0
+        	minValueRow = 0
+        }
+
     </script>
 </head>
 
-<body background="bg.jpg">
+<body>
 <div>
 奶茶选择如下：<br><br>
 店名
-<input type="text" id="tea111" size="10" maxlength="30" value="请先按按钮">
+<input type="text" id="tea111" size="10" maxlength="30" value="请先按按钮"/>
 奶茶名
-<input type="text" id="tea222" size="25" maxlength="75" value="请先按按钮"><br><br>
+<input type="text" id="tea222" size="25" maxlength="75" value="请先按按钮"/><br><br>
 <button onclick="choose()">立刻随机选择奶茶</button><br><br><br>
 注：程序选择具有完全随机性，但是内部的奶茶库都是你喜欢的或者精挑细选好口味的奶茶。<br><br><br>
+
+新上功能！！！新增掷骰子功能，谁扔出的点低，就去楼下拿奶茶&nbsp&nbsp&nbsp&nbsp<button onclick="dot()">掷骰子</button><br><br>
+<textarea name="ar1" id="shaizi" cols="100" rows="10" style="white-space: nowrap;">
+</textarea><br>
+<button onclick="cleartext()">清空结果</button>
+<br><br><br>
+
 丽丽，我做这个网站的目的，是希望在你每次想要喝奶茶的时候，<br>
 能够有一个7*24小时的专门为你而设立的网站，帮助你（或者你朋友同事）一起思考喝什么奶茶好，就这么简单。<br>
 如需添加删除or修改奶茶库，或者有任何定制化的需求，随时告诉我。<br>
