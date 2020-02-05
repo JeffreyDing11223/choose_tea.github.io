@@ -16,8 +16,7 @@ body{font-size:62.5%;font-family:"Microsoft YaHei",Arial; overflow-x:hidden; ove
 </style>
 
    <script>
-        function choose() {
-            var items = ['TPlus','LeLe茶','喜茶','一点点','奈雪','小眷村','快乐柠檬','KOI'];
+   	var items = ['TPlus','LeLe茶','喜茶','一点点','奈雪','小眷村','快乐柠檬','KOI'];
 			var itemsOfTplus = ['冰淇淋红茶 不加糖','冰淇淋厚奶茶 芋圆+3分糖','冰淇淋厚奶茶	仙草+3分糖','英式伯爵厚奶茶 珍珠+不加糖','冻顶乌龙厚奶茶 珍珠+3分糖','焦糖布丁厚奶茶 3分糖','四季春韵厚奶茶 芋圆+3分糖','芋头圆圆鲜奶茶 3分糖','英式伯爵芝芝盖 3分糖','冻顶乌龙芝芝盖 3分糖','四季春韵芝芝盖 3分糖','爽口芒果芝芝盖 3分糖'];
 			var itemsOfLeLe = ['草莓酪酪 3分糖','荔枝酪酪 不加糖','车厘子酪酪 3分糖','金玉茶王酪酪 3分糖','玫珑蜜瓜酪酪 不加糖'];
 			var itemsOfXiCha = ['芝芝桃桃 3分糖','芝芝莓莓 5分糖','芝芝蓝莓双拼 3分糖','多肉葡萄 3分糖','奶茶波波冰 3分糖','芝芝绿研 3分糖','芝芝金玉 3分糖','芝芝金凤茶王 3分糖','满杯橙橙 3分糖','豆豆波波茶 3分糖'];
@@ -26,6 +25,8 @@ body{font-size:62.5%;font-family:"Microsoft YaHei",Arial; overflow-x:hidden; ove
 			var itemsOfXjc = ['涓豆腐奶茶 芝麻芋圆+不加糖','小眷村奶茶 不加糖','草莓小确幸 3分糖'];
 			var itemsOfKlnm = ['半熟蛋糕珍珠奶茶 3分糖','蛋糕忌廉珍珠奶茶 3分糖','OREO曲奇奶茶 3分糖','岩盐芝士绿茶 3分糖','岩盐芝士四季春茶 3分糖','岩盐芝士红茶 3分糖','两瓶养乐多柠檬绿茶 3分糖'];
 			var itemsOfKOI = ['伯爵珍奶 不加糖','芋圆伯爵奶茶 2分糖','鲜芒果绿 珍珠+不加糖','锡兰芋圆红茶 3分糖'];
+
+        function choose() {
 			var item = items[Math.floor(Math.random()*items.length)];
 			var item = items[Math.floor(Math.random()*items.length)];
 			var item2
@@ -57,6 +58,47 @@ body{font-size:62.5%;font-family:"Microsoft YaHei",Arial; overflow-x:hidden; ove
 			}
 			document.getElementById("tea111").value=item
 			document.getElementById("tea222").value=item2
+        }
+
+        function store() {
+        	var store1=document.getElementById("seleid").value;
+			var option1=document.getElementById("seleid2");
+			option1.options.length=0;
+			var teas = new Array();
+			switch (store1) {
+				case 'TPlus':
+					teas = itemsOfTplus;
+					break;
+				case 'LeLe茶':
+					teas = itemsOfLeLe;
+					break;
+				case '喜茶':
+					teas = itemsOfXiCha;
+					break;
+				case '一点点':
+					teas = itemsOfYidd;
+					break;
+				case '奈雪':
+					teas = itemsOfNaiXue;
+					break;
+				case '小眷村':
+					teas = itemsOfXjc;
+					break;
+				case '快乐柠檬':
+					teas = itemsOfKlnm;
+					break;
+				case 'KOI':
+					teas = itemsOfKOI;
+					break;
+			}
+			// var opt=document.createElement("option");
+			// opt.innerHTML='现在请选择吧';
+			// option1.appendChild(opt);
+			for(var i=0;i<teas.length;i++){
+				var opt=document.createElement("option");
+				opt.innerHTML=teas[i];
+				option1.appendChild(opt);
+			}
         }
 
         var results = new Array();
@@ -132,6 +174,7 @@ body{font-size:62.5%;font-family:"Microsoft YaHei",Arial; overflow-x:hidden; ove
         	minValueRow = 0
         }
 
+
     </script>
 </head>
 
@@ -144,6 +187,24 @@ body{font-size:62.5%;font-family:"Microsoft YaHei",Arial; overflow-x:hidden; ove
 <input type="text" id="tea222" size="25" maxlength="75" value="请先按按钮"/><br><br>
 <button onclick="choose()">立刻随机选择奶茶</button><br><br><br>
 注：程序选择具有完全随机性，但是内部的奶茶库都是你喜欢的或者精挑细选好口味的奶茶。<br><br><br>
+
+新增功能！！！ 支持先选奶茶店，然后再挑选奶茶，做选择题胜过思考题，哈哈哈<br><br>
+<select onchange="store()" ="store()" id="seleid">
+   	<option>---用你的小手指选它---</option>
+   	<option>TPlus</option>
+   	<option>LeLe茶</option>
+   	<option>喜茶</option>
+   	<option>一点点</option>
+   	<option>奈雪</option>
+   	<option>小眷村</option>
+   	<option>奈雪</option>
+   	<option>快乐柠檬</option>
+   	<option>KOI</option>
+</select>
+<select  id="seleid2">
+   	<option>---先选左边那个---</option>
+</select>
+<br><br><br>
 
 新上功能！！！新增掷骰子功能，谁扔出的点低，就去楼下拿奶茶&nbsp&nbsp&nbsp&nbsp<button onclick="dot()">掷骰子</button><br><br>
 <textarea name="ar1" id="shaizi" cols="100" rows="10">
